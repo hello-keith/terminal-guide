@@ -106,24 +106,24 @@ glog                   # visual branch/commit history
 
 Tmux is already running when you open Ghostty. The status bar at the top shows your windows.
 
-Tmux uses a **prefix key**: press `Ctrl+B`, release, then press the action key.
+Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 
 **Most common actions:**
 ```
-Ctrl+B  |        → split pane side-by-side
-Ctrl+B  -        → split pane top/bottom
-Ctrl+B  h/j/k/l  → move between panes (vim-style)
-Ctrl+B  z        → make pane fullscreen (toggle)
-Ctrl+B  x        → close current pane
+Ctrl+A  v        → split pane side-by-side
+Ctrl+A  s        → split pane top/bottom
+Ctrl+A  h/j/k/l  → move between panes (vim-style)
+Ctrl+A  z        → make pane fullscreen (toggle)
+Ctrl+A  c        → close current pane
 
-Ctrl+B  c        → new window (tab)
-Ctrl+B  1-9      → jump to window by number
-Ctrl+B  n / p    → next / previous window
+Ctrl+A  Ctrl+C   → new window (tab)
+Ctrl+A  1-9      → jump to window by number
+Ctrl+A  H / L    → previous / next window
 
-Ctrl+B  [        → enter scroll mode (then j/k to scroll, / to search, q to exit)
+Ctrl+A  [        → enter scroll mode (then j/k to scroll, / to search, q to exit)
 ```
 
-To detach (keeps session alive): `Ctrl+B  d`
+To detach (keeps session alive): `Ctrl+A  Ctrl+D`
 To reattach later: `tmux attach`
 
 ### Command History
@@ -181,6 +181,5 @@ But most external commands (git, brew, curl, etc.) work exactly the same.
 | Prompt looks broken | Open new tab: `Cmd+T` |
 | Icons show as boxes/??? | Font isn't loaded — restart Ghostty |
 | Config change not working | Nushell/Starship: open new tab. Ghostty: auto-reloads |
-| Stuck in vi normal mode | Press `i` to get back to typing |
 | Tmux status bar missing | Open new Ghostty window: `Cmd+N` |
-| Can't scroll up | `Ctrl+B [` enters scroll mode, then `j/k`. Press `q` to exit |
+| Can't scroll up | `Ctrl+A [` enters scroll mode, then `j/k`. Press `q` to exit |

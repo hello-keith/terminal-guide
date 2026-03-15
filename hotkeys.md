@@ -31,7 +31,7 @@
 | `Ctrl+C` | Cancel current input |
 | `Ctrl+D` | Exit shell |
 | `Ctrl+L` | Clear screen |
-| `Ctrl+A` / `Ctrl+E` | Jump to start / end of line |
+| `Home` / `Ctrl+E` | Jump to start / end of line |
 | `Alt+Left` / `Alt+Right` | Move word backward / forward |
 
 ---

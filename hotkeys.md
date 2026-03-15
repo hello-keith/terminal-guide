@@ -17,31 +17,22 @@
 
 ---
 
-## Nushell (Shell) — Vi Mode
+## Fish (Shell)
 
-Your shell uses **vi keybindings**. There are two modes:
-
-### Insert Mode (you start here — type normally)
 | Key | Action |
 |-----|--------|
-| `Escape` | Switch to Normal mode |
 | `Tab` | Open completions |
-| `Ctrl+N` | IDE-style completions (with descriptions) |
-| `Ctrl+R` | Search command history |
+| `Ctrl+R` | Search command history (Atuin) |
+| `Up` / `Down` | Browse history |
+| `Right` | Accept inline autosuggestion |
+| `Alt+Right` | Accept next word of suggestion |
+| `Alt+Backspace` | Delete word backward |
+| `Ctrl+W` | Delete word backward |
 | `Ctrl+C` | Cancel current input |
 | `Ctrl+D` | Exit shell |
 | `Ctrl+L` | Clear screen |
-| `Up` / `Down` | Browse history |
-| `Right` | Accept inline suggestion |
-| `Ctrl+Right` | Accept next word of suggestion |
-| `Alt+Backspace` | Delete word backward |
-| `Ctrl+W` | Delete word backward |
-| `Backspace` | Delete character |
-
-### Normal Mode (press Escape first)
-Standard vi motions work: `h` `j` `k` `l`, `w` `b` `e`, `0` `$`, `dd`, `yy`, `p`, etc.
-
-Press `i` or `a` to go back to Insert mode.
+| `Ctrl+A` / `Ctrl+E` | Jump to start / end of line |
+| `Alt+Left` / `Alt+Right` | Move word backward / forward |
 
 ---
 

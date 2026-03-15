@@ -45,65 +45,57 @@ Press `i` or `a` to go back to Insert mode.
 
 ---
 
-## Zellij (Terminal Multiplexer)
+## Tmux (Terminal Multiplexer)
 
-Zellij uses **modes**. You're normally in Normal mode. Press a mode key to enter that mode, then press the action key.
+Tmux uses a **prefix key**: press `Ctrl+B`, release, then press the action key.
 
-### Quick Reference (works from anywhere except Locked)
+### Pane Management
 | Key | Action |
 |-----|--------|
-| `Alt + N` | New pane (split) |
-| `Alt + H` / `Alt + Left` | Focus pane/tab left |
-| `Alt + L` / `Alt + Right` | Focus pane/tab right |
-| `Alt + J` / `Alt + Down` | Focus pane below |
-| `Alt + K` / `Alt + Up` | Focus pane above |
-| `Alt + =` | Make pane bigger |
-| `Alt + -` | Make pane smaller |
+| `Ctrl+B  |` | Split pane vertically (side-by-side) |
+| `Ctrl+B  -` | Split pane horizontally (top/bottom) |
+| `Ctrl+B  h` | Focus pane left |
+| `Ctrl+B  j` | Focus pane below |
+| `Ctrl+B  k` | Focus pane above |
+| `Ctrl+B  l` | Focus pane right |
+| `Ctrl+B  z` | Toggle pane zoom (fullscreen) |
+| `Ctrl+B  x` | Close current pane |
+| `Ctrl+B  H/J/K/L` | Resize pane (repeatable) |
 
-### Mode Keys (press to enter mode, then press action)
-
-| Mode Key | Mode | What it does |
-|----------|------|-------------|
-| `Ctrl+A` | **Pane** | Manage panes (split, close, move, resize) |
-| `Ctrl+T` | **Tab** | Manage tabs (new, close, rename, switch) |
-| `Ctrl+S` | **Scroll** | Scroll through output, search text |
-| `Ctrl+N` | **Resize** | Resize panes with h/j/k/l |
-| `Ctrl+X` | **Session** | Detach, session manager |
-| `Ctrl+B` | **Tmux** | Tmux-compatible shortcuts |
-| `Ctrl+G` | **Lock** | Lock keyboard (press Ctrl+G again to unlock) |
-
-Press `Escape` or `Enter` to exit any mode back to Normal.
-
-### Pane Mode (`Ctrl+A` then...)
+### Window Management (Tabs)
 | Key | Action |
 |-----|--------|
-| `n` | New pane |
-| `d` | Split down |
-| `x` | Close pane |
-| `z` | Toggle fullscreen |
-| `w` | Toggle floating panes |
-| `r` | Rename pane |
-| `h/j/k/l` | Move focus |
+| `Ctrl+B  c` | New window |
+| `Ctrl+B  1-9` | Jump to window by number |
+| `Ctrl+B  n` | Next window |
+| `Ctrl+B  p` | Previous window |
+| `Ctrl+B  ,` | Rename window |
+| `Ctrl+B  &` | Close window |
 
-### Tab Mode (`Ctrl+T` then...)
+### Session Management
 | Key | Action |
 |-----|--------|
-| `n` | New tab |
-| `x` | Close tab |
-| `r` | Rename tab |
-| `h/k` or `l/j` | Previous / next tab |
-| `1-9` | Jump to tab number |
-| `a` | Toggle between last two tabs |
+| `Ctrl+B  d` | Detach from session |
+| `Ctrl+B  s` | List sessions |
+| `Ctrl+B  $` | Rename session |
 
-### Scroll Mode (`Ctrl+S` then...)
+### Copy Mode (Scrolling & Search)
 | Key | Action |
 |-----|--------|
-| `j/k` | Scroll down/up |
-| `d/u` | Half-page down/up |
-| `Ctrl+F/Ctrl+B` | Full page down/up |
-| `G` | Jump to bottom |
-| `s` | Start searching |
-| `e` | Open scrollback in editor |
+| `Ctrl+B  [` | Enter copy mode |
+| `j / k` | Scroll down / up |
+| `Ctrl+D / Ctrl+U` | Half-page down / up |
+| `/` | Search forward |
+| `?` | Search backward |
+| `n / N` | Next / previous match |
+| `v` | Start selection |
+| `y` | Copy selection |
+| `q` | Exit copy mode |
+
+### Reload Config
+| Key | Action |
+|-----|--------|
+| `Ctrl+B  r` | Reload tmux.conf |
 
 ---
 
@@ -136,7 +128,7 @@ Press `Escape` or `Enter` to exit any mode back to Normal.
 | `Alt+C` | cd into directory |
 | `Ctrl+R` | Search history (may overlap with Atuin) |
 
-> **Note:** In Zellij, `Ctrl+T` enters Tab mode instead of fzf file search. Use `Ctrl+T` for fzf only outside Zellij.
+> **Note:** `Ctrl+T` works everywhere — Tmux does not intercept it.
 
 ---
 

@@ -110,7 +110,7 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 
 **Most common actions:**
 ```
-Ctrl+A  |        → split pane side-by-side
+Ctrl+A  \        → split pane side-by-side
 Ctrl+A  -        → split pane top/bottom
 Ctrl+A  h/j/k/l  → move between panes (vim-style)
 Ctrl+A  z        → make pane fullscreen (toggle)

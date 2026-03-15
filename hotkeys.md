@@ -43,7 +43,7 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 ### Pane Management
 | Key | Action |
 |-----|--------|
-| `Ctrl+A  |` | Split pane side-by-side |
+| `Ctrl+A  \` | Split pane side-by-side |
 | `Ctrl+A  -` | Split pane top/bottom |
 | `Ctrl+A  h` | Focus pane left |
 | `Ctrl+A  j` | Focus pane below |

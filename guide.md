@@ -6,17 +6,9 @@ When you open Ghostty, here's what loads:
 
 ```
 Ghostty (the window)
-  └── Nushell (the shell — where you type commands)
-        └── Starship (the colorful prompt line you see)
-```
-
-When you run `zellij`, it wraps around your shell:
-
-```
-Ghostty (the window)
-  └── Zellij (multiplexer — splits, tabs, sessions)
-        └── Nushell (the shell)
-              └── Starship (the prompt)
+  └── Tmux (multiplexer — splits, tabs, sessions)
+        └── Fish (the shell — where you type commands)
+              └── Starship (the colorful prompt line you see)
 ```
 
 ### The Prompt Explained
@@ -110,33 +102,29 @@ gp                     # push to remote
 glog                   # visual branch/commit history
 ```
 
-### Using Zellij (Split Screen)
+### Using Tmux (Split Screen)
 
-Start it:
-```bash
-zellij
-```
+Tmux is already running when you open Ghostty. The status bar at the top shows your windows.
 
-Now you're inside Zellij. The compact bar at the top shows your tabs.
+Tmux uses a **prefix key**: press `Ctrl+B`, release, then press the action key.
 
 **Most common actions:**
 ```
-Alt+N          → split into a new pane
-Alt+H/L        → switch between panes (left/right)
-Alt+J/K        → switch between panes (up/down)
+Ctrl+B  |        → split pane side-by-side
+Ctrl+B  -        → split pane top/bottom
+Ctrl+B  h/j/k/l  → move between panes (vim-style)
+Ctrl+B  z        → make pane fullscreen (toggle)
+Ctrl+B  x        → close current pane
 
-Ctrl+T, n      → new tab
-Ctrl+T, 1-9    → jump to tab
-Ctrl+T, x      → close tab
+Ctrl+B  c        → new window (tab)
+Ctrl+B  1-9      → jump to window by number
+Ctrl+B  n / p    → next / previous window
 
-Ctrl+A, x      → close current pane
-Ctrl+A, z      → make pane fullscreen (toggle)
-Ctrl+A, d      → split pane downward
-
-Ctrl+S         → enter scroll mode (then j/k to scroll, s to search)
+Ctrl+B  [        → enter scroll mode (then j/k to scroll, / to search, q to exit)
 ```
 
-To exit Zellij: type `exit` in all panes, or `Ctrl+X, d` to detach (keeps session alive).
+To detach (keeps session alive): `Ctrl+B  d`
+To reattach later: `tmux attach`
 
 ### Command History
 
@@ -147,7 +135,7 @@ Or press `Ctrl+R` for a full interactive search across your history.
 ### Finding Files
 
 ```bash
-# fzf fuzzy finder (outside Zellij)
+# fzf fuzzy finder
 Ctrl+T         # find a file, inserts the path
 
 # Inside Nushell
@@ -194,6 +182,5 @@ But most external commands (git, brew, curl, etc.) work exactly the same.
 | Icons show as boxes/??? | Font isn't loaded — restart Ghostty |
 | Config change not working | Nushell/Starship: open new tab. Ghostty: auto-reloads |
 | Stuck in vi normal mode | Press `i` to get back to typing |
-| Zellij bar missing | You might be outside Zellij — run `zellij` |
-| Can't scroll up | `Ctrl+S` enters scroll mode in Zellij, then `j/k` |
-| `Ctrl+T` does Zellij tab not fzf | That's expected inside Zellij — Zellij catches it first |
+| Tmux status bar missing | Open new Ghostty window: `Cmd+N` |
+| Can't scroll up | `Ctrl+B [` enters scroll mode, then `j/k`. Press `q` to exit |

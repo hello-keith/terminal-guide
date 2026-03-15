@@ -4,7 +4,7 @@
 - **Terminal emulator:** Ghostty (Catppuccin Mocha theme, JetBrainsMono Nerd Font)
 - **Shell:** Nushell (default login shell) with vi edit mode
 - **Prompt:** Starship (powerline pill segments, Catppuccin palette)
-- **Multiplexer:** Zellij (compact layout, Nerd Font UI, catppuccin-mocha theme)
+- **Multiplexer:** Tmux (Catppuccin Mocha theme via TPM, vim-style navigation)
 - **Alt shell:** Fish (same Starship prompt, used occasionally)
 
 ## CLI Tools
@@ -22,8 +22,7 @@
 - Starship: `~/.config/starship/starship.toml`
 - Nushell config: `~/Library/Application Support/nushell/config.nu`
 - Nushell env: `~/Library/Application Support/nushell/env.nu`
-- Zellij: `~/.config/zellij/config.kdl`
-- Zellij layout: `~/.config/zellij/layouts/default.kdl`
+- Tmux: `~/.tmux.conf`
 - Fish: `~/.config/fish/config.fish`
 - bat: `~/.config/bat/config`
 - Git (delta): `~/.gitconfig`
@@ -50,3 +49,6 @@
 - Starship config uses Python-written Powerline glyphs (Write tool strips them)
 - Ghostty hot-reloads config on save
 - Nushell/Starship require new shell session to pick up config changes
+- Tmux uses prefix key Ctrl+B — press prefix, release, then action key
+- Tmux copy mode (Ctrl+B [) for scrolling — j/k to scroll, / to search, q to exit
+- Tmux config reloads with Ctrl+B r (or `tmux source-file ~/.tmux.conf`)

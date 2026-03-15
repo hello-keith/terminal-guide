@@ -110,20 +110,20 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 
 **Most common actions:**
 ```
-Ctrl+A  v        → split pane side-by-side
-Ctrl+A  s        → split pane top/bottom
+Ctrl+A  |        → split pane side-by-side
+Ctrl+A  -        → split pane top/bottom
 Ctrl+A  h/j/k/l  → move between panes (vim-style)
 Ctrl+A  z        → make pane fullscreen (toggle)
-Ctrl+A  c        → close current pane
+Ctrl+A  x        → close current pane
 
-Ctrl+A  Ctrl+C   → new window (tab)
+Ctrl+A  c        → new window (tab)
 Ctrl+A  1-9      → jump to window by number
-Ctrl+A  H / L    → previous / next window
+Ctrl+A  n / p    → next / previous window
 
 Ctrl+A  [        → enter scroll mode (then j/k to scroll, / to search, q to exit)
 ```
 
-To detach (keeps session alive): `Ctrl+A  Ctrl+D`
+To detach (keeps session alive): `Ctrl+A  d`
 To reattach later: `tmux attach`
 
 ### Command History

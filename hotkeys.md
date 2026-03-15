@@ -43,33 +43,30 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 ### Pane Management
 | Key | Action |
 |-----|--------|
-| `Ctrl+A  v` | Split pane side-by-side |
-| `Ctrl+A  s` | Split pane top/bottom |
+| `Ctrl+A  |` | Split pane side-by-side |
+| `Ctrl+A  -` | Split pane top/bottom |
 | `Ctrl+A  h` | Focus pane left |
 | `Ctrl+A  j` | Focus pane below |
 | `Ctrl+A  k` | Focus pane above |
 | `Ctrl+A  l` | Focus pane right |
 | `Ctrl+A  z` | Toggle pane zoom (fullscreen) |
-| `Ctrl+A  c` | Close current pane |
-| `Ctrl+A  x` | Swap pane down |
-| `Ctrl+A  , / .` | Resize pane left / right |
-| `Ctrl+A  - / =` | Resize pane down / up |
+| `Ctrl+A  x` | Close current pane |
 
 ### Window Management (Tabs)
 | Key | Action |
 |-----|--------|
-| `Ctrl+A  Ctrl+C` | New window |
+| `Ctrl+A  c` | New window |
 | `Ctrl+A  1-9` | Jump to window by number |
-| `Ctrl+A  H` | Previous window |
-| `Ctrl+A  L` | Next window |
-| `Ctrl+A  Ctrl+A` | Toggle last window |
-| `Ctrl+A  r` | Rename window |
+| `Ctrl+A  n` | Next window |
+| `Ctrl+A  p` | Previous window |
+| `Ctrl+A  ,` | Rename window |
+| `Ctrl+A  &` | Close window |
 
 ### Session Management
 | Key | Action |
 |-----|--------|
-| `Ctrl+A  Ctrl+D` | Detach from session |
-| `Ctrl+A  S` | Choose session |
+| `Ctrl+A  d` | Detach from session |
+| `Ctrl+A  s` | Choose session |
 | `Ctrl+A  o` | Session manager (sessionx) |
 
 ### Copy Mode (Scrolling & Search)
@@ -89,9 +86,8 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 | Key | Action |
 |-----|--------|
 | `Ctrl+A  R` | Reload tmux config |
-| `Ctrl+A  p` | Toggle floating pane (floax) |
-| `Ctrl+A  K` | Clear screen |
-| `Ctrl+A  *` | Sync panes (type in all at once) |
+| `Ctrl+A  P` | Toggle floating pane (floax) |
+| `Ctrl+A  ?` | List all keybindings |
 
 ---
 

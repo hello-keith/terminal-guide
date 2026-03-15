@@ -1,55 +1,82 @@
 # Terminal Setup Context
 
 ## Stack
-- **Terminal emulator:** Ghostty (Catppuccin Mocha theme, JetBrainsMono Nerd Font)
-- **Shell:** Nushell (default login shell) with vi edit mode
-- **Prompt:** Starship (powerline pill segments, Catppuccin palette)
-- **Multiplexer:** Tmux (Ctrl+A prefix, Catppuccin Mocha theme via TPM, vim-style navigation)
-- **Alt shell:** Fish (same Starship prompt, used occasionally)
+- **Terminal emulator:** Ghostty (Catppuccin Mocha theme, JetBrainsMono Nerd Font Mono, launches tmux directly via `command = /opt/homebrew/bin/tmux`)
+- **Shell:** Fish (default login shell, launched by tmux)
+- **Alt shell:** Nushell with vi edit mode (manually invoked via `nu`)
+- **Prompt:** Starship (powerline pill segments, Catppuccin Mocha palette)
+- **Multiplexer:** Tmux (Ctrl+A prefix, omerxx/catppuccin-tmux fork theme via TPM, vim-style navigation)
+
+## Startup Flow
+Ghostty -> tmux -> Fish (default shell) -> Starship prompt
 
 ## CLI Tools
-- `eza` — ls replacement (aliased as `l`, `ll`, `lt` with `--icons=always`)
-- `bat` — cat replacement (aliased as `cat`, Catppuccin Mocha theme)
-- `delta` — git diff pager (side-by-side, line numbers, aliased as `diff`)
-- `zoxide` — smart cd (tracks frecency, use `z` to jump)
-- `fzf` — fuzzy finder
-- `atuin` — shell history (synced, searchable)
-- `mise` — dev tool version manager (shims in PATH)
-- `carapace` — completion engine for Nushell
+- `eza` -- ls replacement (Fish: aliased as `l`, `ll`, `lt`; Nushell: only `lt` uses eza, `l`/`ll` use native `ls`)
+- `bat` -- cat replacement (aliased as `cat`, Catppuccin Mocha theme)
+- `delta` -- git diff pager (side-by-side, line numbers, aliased as `diff`)
+- `zoxide` -- smart cd (tracks frecency, use `z` to jump)
+- `fzf` -- fuzzy finder (Fish: key bindings sourced via `fzf --fish`)
+- `atuin` -- shell history (synced, searchable)
+- `mise` -- dev tool version manager (shims in PATH)
+- `carapace` -- completion engine for Nushell
 
 ## Config Locations
-- Ghostty: `~/.config/ghostty/config`
-- Starship: `~/.config/starship/starship.toml`
-- Nushell config: `~/Library/Application Support/nushell/config.nu`
-- Nushell env: `~/Library/Application Support/nushell/env.nu`
-- Tmux: `~/.config/tmux/tmux.conf`
-- Tmux keybindings: `~/.config/tmux/tmux.reset.conf`
-- Fish: `~/.config/fish/config.fish`
-- bat: `~/.config/bat/config`
-- Git (delta): `~/.gitconfig`
+All configs live in this repo (`configs/`) and are symlinked to their expected paths:
+- Ghostty: `~/.config/ghostty/config` -> `configs/ghostty.conf`
+- Starship: `~/.config/starship/starship.toml` -> `configs/starship.toml`
+- Tmux: `~/.config/tmux/tmux.conf` -> `configs/tmux.conf`
+- Tmux keybindings: `~/.config/tmux/tmux.reset.conf` -> `configs/tmux.reset.conf`
+- Nushell config: `~/Library/Application Support/nushell/config.nu` -> `configs/config.nu`
+- Nushell env: `~/Library/Application Support/nushell/env.nu` -> `configs/env.nu`
+- bat: `~/.config/bat/config` -> `configs/bat.conf`
+- Git (delta): `~/.gitconfig` -> `configs/gitconfig`
+- Fish: `~/.config/fish/config.fish` (NOT yet tracked in repo)
 
-## Shell Aliases (Nushell + Fish)
-- `l` / `ll` / `lt` — eza list variants
-- `c` — clear
-- `cat` — bat
-- `diff` — delta
-- `z <partial>` — zoxide jump (e.g., `z proj` jumps to ~/projects)
-- Git: `gst`, `gc "msg"`, `gp`, `gpu`, `glog`, `gdiff`, `gco`, `gb`, `ga`
+## Fish Aliases
+- `l` / `ll` / `lt` -- eza list variants (with icons, git info)
+- `c` -- clear
+- `cat` -- bat
+- `diff` -- delta
+- `z <partial>` -- zoxide jump (e.g., `z proj` jumps to ~/projects)
+- `agents` -- claude --teammate-mode tmux
+- `mini` -- mosh into Mac Mini with tmux
+- Git: `gst`, `gc "msg"`, `gca "msg"`, `gp`, `gpu`, `glog`, `gdiff`, `gco`, `gb`, `gba`, `gadd`, `ga` (add -p), `gr`, `gre`
 
-## Autocomplete
+## Nushell Aliases (differ from Fish)
+- `l` -- `ls --all` (native, NOT eza)
+- `ll` -- `ls -l` (native, NOT eza)
+- `lt` -- eza tree view (same as Fish)
+- `cat` / `diff` / `c` -- same as Fish
+- Git aliases -- same as Fish plus `gcoall` (checkout all)
+
+## Autocomplete (Nushell)
 - **Engine:** carapace (bridges zsh, fish, bash, inshellisense completions into Nushell)
 - **Algorithm:** fuzzy (set in config.nu `completions.algorithm`)
 - **Completer:** defined as `$carapace_completer` closure at top of config.nu, referenced in `completions.external.completer`
 - **Bridges env:** `CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'` (set in env.nu)
 - carapace init is generated in env.nu (`carapace _carapace nushell | save`) and sourced at end of config.nu
-- The completer MUST be defined before `$env.config` block — dynamic override from init.nu does not persist
+- The completer MUST be defined before `$env.config` block -- dynamic override from init.nu does not persist
+- Fish has its own built-in fuzzy completion (no carapace needed)
+
+## Tmux Plugins (via TPM)
+- tmux-sensible, tmux-yank, tmux-resurrect, tmux-continuum
+- tmux-thumbs, tmux-fzf, tmux-fzf-url
+- omerxx/catppuccin-tmux, omerxx/tmux-sessionx, omerxx/tmux-floax
+- TPM itself at `~/.tmux/plugins/tpm/tpm`
+
+## Tmux Keybindings (tmux.reset.conf)
+- `h/j/k/l` -- vim-style pane navigation
+- `\` -- vertical split (preserves path)
+- `-` -- horizontal split (preserves path)
+- `v` -- begin selection in copy mode
+- `R` -- reload config
 
 ## Notes
-- User is new to terminal workflows — prefer simple explanations
+- User is new to terminal workflows -- prefer simple explanations
 - Nushell uses vi keybindings (Escape to enter normal mode, i to insert)
-- Starship config uses Python-written Powerline glyphs (Write tool strips them)
+- Starship config uses Unicode powerline glyphs (Write tool may strip them)
 - Ghostty hot-reloads config on save
 - Nushell/Starship require new shell session to pick up config changes
-- Tmux uses prefix key Ctrl+A — press prefix, release, then action key
-- Tmux copy mode (Ctrl+A [) for scrolling — j/k to scroll, / to search, q to exit
+- Tmux uses prefix key Ctrl+A -- press prefix, release, then action key
+- Tmux copy mode (Ctrl+A [) for scrolling -- j/k to scroll, / to search, q to exit
 - Tmux config reloads with Ctrl+A R (or `tmux source-file ~/.config/tmux/tmux.conf`)

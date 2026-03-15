@@ -1,5 +1,12 @@
 # Terminal Setup Context
 
+## Setup on a New Mac
+```
+git clone https://github.com/hello-keith/terminal-guide.git
+cd terminal-guide
+./setup.sh
+```
+
 ## Stack
 - **Terminal emulator:** Ghostty (Catppuccin Mocha theme, JetBrainsMono Nerd Font Mono, launches tmux directly via `command = /opt/homebrew/bin/tmux`)
 - **Shell:** Fish (default login shell, launched by tmux)

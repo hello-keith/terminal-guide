@@ -87,6 +87,7 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 |-----|--------|
 | `Ctrl+A  R` | Reload tmux config |
 | `Ctrl+A  P` | Toggle floating pane (floax) |
+| `Ctrl+A  Alt+P` | Floax menu (resize, move, pin) |
 | `Ctrl+A  ?` | List all keybindings |
 
 ---
@@ -120,7 +121,7 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 | `Alt+C` | cd into directory |
 | `Ctrl+R` | Search history (may overlap with Atuin) |
 
-> **Note:** `Ctrl+T` works everywhere — Tmux does not intercept it.
+> **Note:** `Ctrl+T` works everywhere. Tmux does not intercept it.
 
 ---
 
@@ -142,6 +143,7 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 | `gba` | `git branch -a` |
 | `gr` | `git remote` |
 | `gre` | `git reset` |
+| `tgsync` | Push terminal-guide to origin + sync to Mac Mini |
 
 ---
 

@@ -8,14 +8,14 @@ cd terminal-guide
 ```
 
 ## Stack
-- **Terminal emulator:** Ghostty (Catppuccin Mocha theme, JetBrainsMono Nerd Font Mono, launches tmux directly via `command = /opt/homebrew/bin/tmux`)
-- **Shell:** Fish (default login shell, launched by tmux)
+- **Terminal emulator:** Ghostty (Catppuccin Mocha theme, JetBrainsMono Nerd Font Mono, launches fish login shell which starts tmux)
+- **Shell:** Fish (default login shell; also used as Ghostty's launch command to bootstrap PATH for tmux)
 - **Alt shell:** Nushell with vi edit mode (manually invoked via `nu`)
 - **Prompt:** Starship (powerline pill segments, Catppuccin Mocha palette)
 - **Multiplexer:** Tmux (Ctrl+A prefix, omerxx/catppuccin-tmux fork theme via TPM, vim-style navigation)
 
 ## Startup Flow
-Ghostty -> tmux -> Fish (default shell) -> Starship prompt
+Ghostty -> Fish (login shell, sets up PATH) -> tmux new-session -> Fish -> Starship prompt
 
 ## CLI Tools
 - `eza` -- ls replacement (Fish: aliased as `l`, `ll`, `lt`; Nushell: only `lt` uses eza, `l`/`ll` use native `ls`)
@@ -37,7 +37,7 @@ All configs live in this repo (`configs/`) and are symlinked to their expected p
 - Nushell env: `~/Library/Application Support/nushell/env.nu` -> `configs/env.nu`
 - bat: `~/.config/bat/config` -> `configs/bat.conf`
 - Git (delta): `~/.gitconfig` -> `configs/gitconfig`
-- Fish: `~/.config/fish/config.fish` (NOT yet tracked in repo)
+- Fish: `~/.config/fish/config.fish` -> `configs/config.fish`
 
 ## Fish Aliases
 - `l` / `ll` / `lt` -- eza list variants (with icons, git info)
@@ -46,7 +46,8 @@ All configs live in this repo (`configs/`) and are symlinked to their expected p
 - `diff` -- delta
 - `z <partial>` -- zoxide jump (e.g., `z proj` jumps to ~/projects)
 - `agents` -- claude --teammate-mode tmux
-- `mini` -- mosh into Mac Mini with tmux
+- `mini` -- SSH into Mac Mini with tmux
+- `tgsync` -- push terminal-guide to origin + sync to Mac Mini
 - Git: `gst`, `gc "msg"`, `gca "msg"`, `gp`, `gpu`, `glog`, `gdiff`, `gco`, `gb`, `gba`, `gadd`, `ga` (add -p), `gr`, `gre`
 
 ## Nushell Aliases (differ from Fish)
@@ -87,3 +88,12 @@ All configs live in this repo (`configs/`) and are symlinked to their expected p
 - Tmux uses prefix key Ctrl+A -- press prefix, release, then action key
 - Tmux copy mode (Ctrl+A [) for scrolling -- j/k to scroll, / to search, q to exit
 - Tmux config reloads with Ctrl+A R (or `tmux source-file ~/.config/tmux/tmux.conf`)
+
+## Multi-Machine Sync
+
+This repo is shared between the local Mac and a Mac Mini (`mini` via Tailscale SSH).
+
+- **Mini repo path:** `/Users/js/projects/terminal-guide`
+- **Push + sync alias:** `tgsync` pushes to origin then SSHs to mini to pull (see `sync.md` for full details)
+- **Manual sync:** SSH to mini, `cd /Users/js/projects/terminal-guide && git pull --ff-only && ./setup.sh`
+- **Mini SSH alias:** `mini` (connects and attaches to tmux session)

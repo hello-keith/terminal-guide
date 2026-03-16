@@ -8,6 +8,7 @@ fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
 
 # mise shims + local bin
 fish_add_path $HOME/.local/share/mise/shims $HOME/.local/bin $HOME/.dotnet/tools
+fish_add_path $HOME/.resend/bin
 
 # Starship prompt
 set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
@@ -31,7 +32,7 @@ alias cat "bat"
 alias diff "delta"
 alias agents "claude --teammate-mode tmux"
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias mini "mosh mini -- tmux new-session -A -s main"
+alias mini "ssh mini -t 'tmux new-session -A -s main'"
 
 # Git aliases
 alias gc "git commit -m"
@@ -48,6 +49,7 @@ alias gadd "git add"
 alias ga "git add -p"
 alias gr "git remote"
 alias gre "git reset"
+alias tgsync "git push origin HEAD && ssh mini 'cd /Users/js/projects/terminal-guide && git stash; git pull --ff-only; git stash pop 2>/dev/null; true'"
 
 # opencode
 fish_add_path /Users/js/.opencode/bin

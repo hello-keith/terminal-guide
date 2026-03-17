@@ -34,6 +34,12 @@
 | `Home` / `Ctrl+E` | Jump to start / end of line |
 | `Alt+Left` / `Alt+Right` | Move word backward / forward |
 
+### Fish-Only Aliases
+| Alias | Command |
+|-------|---------|
+| `agents` | `claude --teammate-mode tmux` |
+| `mini` | SSH into Mac Mini with tmux |
+
 ---
 
 ## Tmux (Terminal Multiplexer)
@@ -51,6 +57,23 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 | `Ctrl+A  l` | Focus pane right |
 | `Ctrl+A  z` | Toggle pane zoom (fullscreen) |
 | `Ctrl+A  x` | Close current pane |
+| `Ctrl+A  Space` | Cycle through pane layouts (flip vertical/horizontal) |
+| `Ctrl+A  {` | Swap pane with previous |
+| `Ctrl+A  }` | Swap pane with next |
+| `Ctrl+A  !` | Break pane into its own window |
+| `Ctrl+A  q` | Show pane numbers (type number to jump) |
+| `Ctrl+A  Ctrl+O` | Rotate panes |
+
+### Layout Shortcuts
+| Key | Action |
+|-----|--------|
+| `Ctrl+A  M-1` | Force even-horizontal layout |
+| `Ctrl+A  M-2` | Force even-vertical layout |
+| `Ctrl+A  M-3` | Main-horizontal layout |
+| `Ctrl+A  M-4` | Main-vertical layout |
+| `Ctrl+A  M-5` | Tiled layout |
+
+> **Tip:** Mouse is enabled — drag pane borders to resize.
 
 ### Window Management (Tabs)
 | Key | Action |
@@ -59,6 +82,7 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 | `Ctrl+A  1-9` | Jump to window by number |
 | `Ctrl+A  n` | Next window |
 | `Ctrl+A  p` | Previous window |
+| `Ctrl+A  w` | Visual window/session picker |
 | `Ctrl+A  ,` | Rename window |
 | `Ctrl+A  &` | Close window |
 
@@ -145,12 +169,47 @@ Tmux uses a **prefix key**: press `Ctrl+A`, release, then press the action key.
 | `gre` | `git reset` |
 | `tgsync` | Push terminal-guide to origin + sync to Mac Mini |
 
+> **Git config:** Delta pager with side-by-side diffs, line numbers, Catppuccin Mocha theme. Merge conflicts use `diff3` (three-way) style.
+
 ---
 
 ## eza (ls replacement)
 
-| Alias | What it shows |
-|-------|--------------|
-| `l` | Long list with git status |
-| `ll` | Long list + hidden files |
-| `lt` | Tree view (2 levels deep) with icons |
+| Alias | What it shows | Shell |
+|-------|--------------|-------|
+| `l` | Long list with git status (eza) | Fish |
+| `l` | `ls --all` (native) | Nushell |
+| `ll` | Long list + hidden files (eza) | Fish |
+| `ll` | `ls -l` (native) | Nushell |
+| `lt` | Tree view (2 levels deep) with icons (eza) | Both |
+
+---
+
+## Nushell (Alt Shell)
+
+Nushell uses **vi edit mode** — press `Escape` for normal mode, `i` to insert.
+
+### Keybindings
+| Key | Action |
+|-----|--------|
+| `Tab` | Open completions menu |
+| `Ctrl+N` | IDE completion menu |
+| `Ctrl+R` | History search (interactive) |
+| `Ctrl+Q` | History search (alternative) |
+| `Ctrl+L` | Clear screen |
+| `Ctrl+C` | Cancel command |
+| `Ctrl+D` | Quit shell |
+| `Ctrl+O` | Open command in editor |
+| `F1` | Help menu |
+| `Escape` | Enter vi normal mode |
+
+### Nushell-Only Aliases
+| Alias | Command |
+|-------|---------|
+| `gcoall` | `git checkout -- .` (revert all files) |
+| `cx <dir>` | `cd` + `ls -l` (change dir and list) |
+| `asr` | `atuin scripts run` |
+| `agents` | `claude --teammate-mode tmux` |
+| `mini` | SSH into Mac Mini with tmux |
+
+> **Note:** Most git and utility aliases (`cat`, `diff`, `c`) are the same as Fish.

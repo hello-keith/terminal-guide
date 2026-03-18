@@ -32,7 +32,7 @@ alias cat "bat"
 alias diff "delta"
 alias agents "claude --teammate-mode tmux"
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias mini "ssh mini -t 'tmux new-session -A -s main'"
+alias mini "ssh mini -t 'tmux new-session -A -s ssh'"
 
 # Git aliases
 alias gc "git commit -m"

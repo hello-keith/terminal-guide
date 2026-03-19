@@ -33,7 +33,8 @@ alias diff "delta"
 alias agents "claude --teammate-mode tmux"
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 function mini
-    ssh mini -t "tmux new-session -A -s ssh"
+    set -l session_name (test (count $argv) -gt 0; and echo $argv[1]; or echo main)
+    ssh mini -t "tmux new-session -A -s $session_name"
 end
 
 # Git aliases

@@ -46,7 +46,7 @@ All configs live in this repo (`configs/`) and are symlinked to their expected p
 - `diff` -- delta
 - `z <partial>` -- zoxide jump (e.g., `z proj` jumps to ~/projects)
 - `agents` -- claude --teammate-mode tmux
-- `mini` -- SSH into Mac Mini with tmux
+- `mini [name]` -- SSH into Mac Mini with tmux (defaults to session `main`, e.g. `mini dev`)
 - `tgsync` -- push terminal-guide to origin + sync to Mac Mini
 - Git: `gst`, `gc "msg"`, `gca "msg"`, `gp`, `gpu`, `glog`, `gdiff`, `gco`, `gb`, `gba`, `gadd`, `ga` (add -p), `gr`, `gre`
 
@@ -68,7 +68,7 @@ All configs live in this repo (`configs/`) and are symlinked to their expected p
 
 ## Tmux Plugins (via TPM)
 - tmux-sensible, tmux-yank, tmux-resurrect, tmux-continuum
-- tmux-thumbs, tmux-fzf, tmux-fzf-url
+- tmux-fzf, tmux-fzf-url
 - omerxx/catppuccin-tmux, omerxx/tmux-sessionx, omerxx/tmux-floax
 - TPM itself at `~/.tmux/plugins/tpm/tpm`
 
@@ -96,4 +96,4 @@ This repo is shared between the local Mac and a Mac Mini (`mini` via Tailscale S
 - **Mini repo path:** `/Users/js/projects/terminal-guide`
 - **Push + sync alias:** `tgsync` pushes to origin then SSHs to mini to pull (see `sync.md` for full details)
 - **Manual sync:** SSH to mini, `cd /Users/js/projects/terminal-guide && git pull --ff-only && ./setup.sh`
-- **Mini SSH alias:** `mini` (connects and attaches to tmux session)
+- **Mini SSH alias:** `mini [name]` (connects to named tmux session, defaults to `main`)
